@@ -4,10 +4,10 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 COPY package.json /usr/app/ 
-COPY pnpm-lock.yaml /usr/app/ 
+# COPY pnpm-lock.yaml /usr/app/ 
 # Copy package.json and package-lock.json to /usr/app
 
-COPY src /usr/app/
+COPY src /usr/app/src
 # Copy all files in src to /usr/app
 
 WORKDIR /usr/app
@@ -15,5 +15,4 @@ WORKDIR /usr/app
 
 RUN pnpm install
 
-CMD ["node", "index.js"]
-
+CMD ["pnpm", "start"]
