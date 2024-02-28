@@ -1,6 +1,10 @@
 FROM node:20
 
-COPY package*.json /usr/app/ 
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY package.json /usr/app/ 
+COPY pnpm-lock.yaml /usr/app/ 
 # Copy package.json and package-lock.json to /usr/app
 
 COPY src /usr/app/
